@@ -38,11 +38,9 @@ public class UserDB {
         EntityTransaction et = em.getTransaction();
 
         try {
-            Role role = user.getRole();
             et.begin();
             em.persist(user);
-            role.getUserList().add(user);
-            em.merge(role);
+            em.merge(user);
             et.commit();
         } catch (Exception e) {
             et.rollback();

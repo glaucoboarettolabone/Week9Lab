@@ -57,13 +57,11 @@
 
                         <input type="text" name="password" placeholder="Password" value="${editUser.password}">
                         <br/>
-                        <!--
                         <select name="role">
                             <c:forEach items="${role}" var="read">    
                                 <option value="${read.roleId}" <c:if test="${editUser.role.roleId    eq read.roleId}">selected</c:if>>${read.roleName}</option>
                             </c:forEach>
                         </select><br/>
-                        -->
                         <input type="hidden" name="action" value="update">
                         <input type="submit" value="Update">
                         

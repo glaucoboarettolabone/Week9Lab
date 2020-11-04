@@ -47,8 +47,8 @@ public class UserServlet extends HttpServlet {
                 
         UserService users = new UserService();
         
-        User newUser = null;
-        Role newRole = null;
+        User user = null;
+        Role role = null;
         String userEmail = request.getParameter("useremail");
 
         if (userEmail == null || userEmail.isEmpty()) {
@@ -57,19 +57,19 @@ public class UserServlet extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String password = request.getParameter("password");
-            int role = Integer.parseInt(request.getParameter("role"));
+            int roleId = Integer.parseInt(request.getParameter("role"));
 
-            newRole = new Role(Integer.parseInt(request.getParameter("role")));
-            newUser = new User(email, active, firstName, lastName, password);      
+            role = new Role(roleId);
+            user = new User(email, active, firstName, lastName, password);      
         }
 
         try {
             switch (action) {
                 case "add":
-                    users.insert(newUser);
+                    users.insert(user, role);
                     break;
                 case "update":
-                    users.update(newUser);
+                    users.update(user, role);
                     break;
                 case "delete":
                     users.delete(userEmail);

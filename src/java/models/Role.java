@@ -20,6 +20,10 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author 815000
+ */
 @Entity
 @Table(name = "role")
 @XmlRootElement
@@ -91,8 +95,7 @@ public class Role implements Serializable {
             return false;
         } else {
             Role other = (Role) object;
-            //if ((this.roleId == null && other.roleId != null) || (this.roleId != null && !this.roleId.equals(other.roleId))) {
-            return !(this.roleId != null && !this.roleId.equals(other.roleId));           
+            return ((this.roleId == null && other.roleId != null) || (this.roleId != null && !this.roleId.equals(other.roleId))) ;           
         }
     }
 

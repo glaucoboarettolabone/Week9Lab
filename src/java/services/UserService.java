@@ -5,9 +5,9 @@
  */
 package services;
 
-import dataaccess.RoleDB;
 import dataaccess.UserDB;
 import java.util.List;
+import models.Role;
 import models.User;
 
 public class UserService {
@@ -24,16 +24,16 @@ public class UserService {
         return users;
     }
    
-    public void insert(User thisUser) throws Exception {
+    public void insert(User thisUser, Role thisRole) throws Exception {
         User user = thisUser;
-        RoleDB roleDB = new RoleDB();
-        user.setRole(roleDB.get(2));
+        user.setRole(thisRole);
         UserDB userDB = new UserDB();
         userDB.insert(user);
     }
     
-    public void update(User thisUser) throws Exception {
+    public void update(User thisUser, Role thisRole) throws Exception {
         User user = thisUser;
+        user.setRole(thisRole);
         UserDB userDB = new UserDB();
         userDB.update(user);
     }
