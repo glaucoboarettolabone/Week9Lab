@@ -48,17 +48,19 @@ public class UserServlet extends HttpServlet {
         UserService users = new UserService();
         
         User newUser = null;
+        Role newRole = null;
         String userEmail = request.getParameter("useremail");
 
         if (userEmail == null || userEmail.isEmpty()) {
             String email = request.getParameter("email");
-            int active = 1;
+            boolean active = true;
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String password = request.getParameter("password");
             int role = Integer.parseInt(request.getParameter("role"));
 
-            newUser = new User(email, active, firstName, lastName, password, role);            
+            newRole = new Role(Integer.parseInt(request.getParameter("role")));
+            newUser = new User(email, active, firstName, lastName, password);      
         }
 
         try {

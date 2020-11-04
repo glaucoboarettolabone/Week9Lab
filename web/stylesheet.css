@@ -62,7 +62,8 @@ input[type="text"], select {
 }
 
 .btnDelete {
-  background: url(images/delete.png) no-repeat;
+    
+  background: url(images/delete.svg) no-repeat;
   width: 15px;
   height: 15px;
   background-size: 100% 100%;
@@ -74,7 +75,7 @@ input[type="text"], select {
 }
 
 .btnEdit {
-  background: url(images/edit.png) no-repeat;
+  background: url(images/edit.svg) no-repeat;
   width: 15px;
   height: 15px;
   background-size: 100% 100%;

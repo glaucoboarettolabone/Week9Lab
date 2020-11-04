@@ -5,13 +5,11 @@
  */
 package services;
 
+import dataaccess.RoleDB;
 import dataaccess.UserDB;
 import java.util.List;
 import models.User;
-/**
- *
- * @author 829942
- */
+
 public class UserService {
     
     public User get(String email) throws Exception {
@@ -25,10 +23,11 @@ public class UserService {
         List<User> users = userDB.getAll();
         return users;
     }
-    
-    
+   
     public void insert(User thisUser) throws Exception {
         User user = thisUser;
+        RoleDB roleDB = new RoleDB();
+        user.setRole(roleDB.get(2));
         UserDB userDB = new UserDB();
         userDB.insert(user);
     }
@@ -43,6 +42,5 @@ public class UserService {
         UserDB userDB = new UserDB();
         userDB.delete(email);
     }
-   
-    
+  
 }
