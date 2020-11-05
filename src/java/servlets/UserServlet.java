@@ -60,16 +60,28 @@ public class UserServlet extends HttpServlet {
             int roleId = Integer.parseInt(request.getParameter("role"));
 
             role = new Role(roleId);
-            user = new User(email, active, firstName, lastName, password);      
+            user = new User(email, active, firstName, lastName, password);
         }
 
+        User userOriginal = null;
+        String originalEmail = request.getParameter("originalemail");
+        if (originalEmail != null) {
+            userOriginal = new User(originalEmail);            
+        }
+
+        
         try {
             switch (action) {
                 case "add":
                     users.insert(user, role);
                     break;
                 case "update":
-                    users.update(user, role);
+                    if (user.equals(userOriginal)) {
+                        users.update(user, role);    
+                    } else {
+                        users.delete(userOriginal.getEmail());
+                        users.insert(user, role);
+                    }
                     break;
                 case "delete":
                     users.delete(userEmail);

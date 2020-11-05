@@ -46,7 +46,7 @@
                 <div class="box add">
                     <h1>Edit User</h1>
                     <form method="post" action="user">
-                        <input type="text" name="email" placeholder="E-Mail" value="${editUser.email}">
+                        <input type="text" name="email" placeholder="E-Mail" value="${editUser.email}">                        
                         <br/>
 
                         <input type="text" name="firstName" placeholder="First Name" value="${editUser.firstName}">
@@ -62,6 +62,7 @@
                                 <option value="${read.roleId}" <c:if test="${editUser.role.roleId    eq read.roleId}">selected</c:if>>${read.roleName}</option>
                             </c:forEach>
                         </select><br/>
+                        <input type="hidden" name="originalemail" value="${editUser.email}">
                         <input type="hidden" name="action" value="update">
                         <input type="submit" value="Update">
                         
