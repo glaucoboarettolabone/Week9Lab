@@ -68,7 +68,6 @@ public class UserServlet extends HttpServlet {
         if (originalEmail != null) {
             userOriginal = new User(originalEmail);            
         }
-
         
         try {
             switch (action) {
